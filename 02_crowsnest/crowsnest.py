@@ -19,6 +19,12 @@ def get_args():
     parser.add_argument('word',
                         metavar='word',
                         help='A Word')
+    parser.add_argument('-s',
+                        '--starboard',
+                        help='Side of the boat',
+                        metavar='starboard',
+                        type=bool,
+                        default=False)
     
 
     return parser.parse_args()
@@ -31,6 +37,7 @@ def main():
     args = get_args()
     word = args.word
     char = word[0]
+    boat_side = "larboard" if not args.starboard else 'starboard'
     if (char.islower() and char.lower() in 'aeiou'):
         article = 'an'
     elif (char.isupper() and char.lower() in 'aeiou'):
@@ -39,7 +46,7 @@ def main():
         article = 'a'
     else:
         article = 'A'
-    print(f'Ahoy, Captain, {article} {word} off the larboard bow!')
+    print(f'Ahoy, Captain, {article} {word} off the {boat_side} bow!')
 
 
 # --------------------------------------------------
