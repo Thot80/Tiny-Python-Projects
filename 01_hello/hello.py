@@ -2,6 +2,8 @@
 # Purpose: Say hello
 
 import argparse
+from subprocess import getstatusoutput, getoutput
+
 
 parser = argparse.ArgumentParser(description='Say hello')
 parser.add_argument('-n', '--name', metavar='name',
