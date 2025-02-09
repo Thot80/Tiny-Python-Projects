@@ -36,16 +36,9 @@ def main():
 
     args = get_args()
     word = args.word
-    char = word[0]
     boat_side = "larboard" if not args.starboard else 'starboard'
-    if (char.islower() and char.lower() in 'aeiou'):
-        article = 'an'
-    elif (char.isupper() and char.lower() in 'aeiou'):
-        article = 'An'
-    elif (char.islower() and not char.lower() in 'aeiou'):
-        article = 'a'
-    else:
-        article = 'A'
+    article = 'an' if word[0].lower() in 'aeiou' else 'a'
+    article = article.title() if word[0].isupper() else article
     print(f'Ahoy, Captain, {article} {word} off the {boat_side} bow!')
 
 

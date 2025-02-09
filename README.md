@@ -109,7 +109,7 @@ Hello, toto!
 
 ### Makefile
 
-Makefiles are used along with the `make` util to define custom receipe.
+Makefiles are used along with the `make` util to define custom receipes.
 
 ```shell
 $ cat Makefile
