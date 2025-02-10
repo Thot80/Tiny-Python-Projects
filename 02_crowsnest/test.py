@@ -89,5 +89,5 @@ def test_vowel_upper():
 # --------------------------------------------------      
 def test_starboard():
     for word in consonant_words:
-        out = getoutput(f'{win_prg} {word} --starboard=True')
+        out = getoutput(f'{win_prg} {word} --starboard')
         assert out.strip() == template.format('a', word, 'starboard')

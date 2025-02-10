@@ -17,14 +17,13 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('word',
-                        metavar='word',
+                        metavar='str',
                         help='A Word')
     parser.add_argument('-s',
                         '--starboard',
+                        action='store_true',
                         help='Side of the boat',
-                        metavar='starboard',
-                        type=bool,
-                        default=False)
+                    )
     
 
     return parser.parse_args()
