@@ -18,18 +18,17 @@ def get_args():
     )
 
     parser.add_argument(
-        "str",
-        help="Item(s) to bring",
+        "item",
         metavar="str",
-        type=str,
         nargs="+",
+        help="Item(s) to bring",
     )
 
     parser.add_argument(
         "-s",
         "--sorted",
+        action='store_true',
         help="Sort the items",
-        action='store_true'
     )
 
     return parser.parse_args()
@@ -40,7 +39,7 @@ def main():
     """Make a jazz noise here"""
 
     args = get_args()
-    items = sorted(args.str) if args.sorted else args.str
+    items = sorted(args.item) if args.sorted else args.item
     total = len(items)
     if (total == 1):
         print(f"You are bringing {items[0]}.")
