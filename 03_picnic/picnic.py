@@ -30,6 +30,13 @@ def get_args():
         action='store_true',
         help="Sort the items",
     )
+    
+    parser.add_argument(
+        "-n",
+        "--no-oxford",
+        action='store_true',
+        help="Remove Oxford trailing comma",
+    )
 
     return parser.parse_args()
 
@@ -45,8 +52,9 @@ def main():
         print(f"You are bringing {items[0]}.")
     elif(total == 2):
         print(f"You are bringing {items[0]} and {items[-1]}.")
-    else:       
-        print(f"You are bringing {', '.join(items[:-1])}, and {items[-1]}.")
+    else:
+        comma = "" if args.no_oxford else ","
+        print(f"You are bringing {', '.join(items[:-1])}{comma} and {items[-1]}.")
 
 
 # --------------------------------------------------

@@ -73,5 +73,5 @@ def test_no_oxford_comas():
 
     arg = 'bananas apples dates cherries'
     out = getoutput(f'{win_prg} {arg} --no-oxford')
-    expected = ('You are bringing apples, bananas, cherries and dates.')
+    expected = ('You are bringing bananas, apples, dates and cherries.')
     assert out.strip() == expected
