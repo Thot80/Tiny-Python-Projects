@@ -44,7 +44,7 @@ def main():
     args = get_args()
     text = args.text 
     
-    print("".join([jumper.get(char, char) for char in text]))
+    print(text.translate(str.maketrans(jumper)))
 
 
 # --------------------------------------------------
