@@ -54,7 +54,7 @@ def test_text_upper_stdout():
 def test_text_lower_stdout():
     """Test STDIN/STDOUT"""
 
-    out = getoutput(f'{win_prg} --e "FOO BAR BAZ"')
+    out = getoutput(f'{win_prg} --ee "FOO BAR BAZ"')
     assert out.strip() == 'foo bar baz'
     
     

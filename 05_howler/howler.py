@@ -31,7 +31,10 @@ def get_args():
                         default='',
                         )
     
-
+    parser.add_argument('--ee',
+                        action='store_true',
+                        help='Output in lower case',
+                        )
     
     args = parser.parse_args()
     
@@ -51,7 +54,7 @@ def main():
     args = get_args()
     out_fh = open(args.outfile, 'wt') if args.outfile else sys.stdout
     for line in args.text:
-        out_fh.write(line.upper())
+        out_fh.write(line.lower()) if args.ee else out_fh.write(line.upper())
     out_fh.close()
 
     
