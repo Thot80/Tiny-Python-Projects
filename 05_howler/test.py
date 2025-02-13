@@ -43,13 +43,21 @@ def test_usage():
 
 
 # --------------------------------------------------
-def test_text_stdout():
+def test_text_upper_stdout():
     """Test STDIN/STDOUT"""
 
     out = getoutput(f'{win_prg} "foo bar baz"')
     assert out.strip() == 'FOO BAR BAZ'
 
 
+# --------------------------------------------------
+def test_text_lower_stdout():
+    """Test STDIN/STDOUT"""
+
+    out = getoutput(f'{win_prg} --e "FOO BAR BAZ"')
+    assert out.strip() == 'foo bar baz'
+    
+    
 # --------------------------------------------------
 def test_text_outfile():
     """Test STDIN/outfile"""

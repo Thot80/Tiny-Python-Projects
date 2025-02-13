@@ -7,6 +7,7 @@ Purpose: Howler (upper-cases input)
 
 import argparse
 import os
+import io
 import sys
 
 # --------------------------------------------------
@@ -29,12 +30,16 @@ def get_args():
                         help='Output filename',
                         default='',
                         )
+    
 
     
     args = parser.parse_args()
     
+    # In both case, filr or tect passed, we want to return a file handler as args to read it line by line (this allows to deal with large files)
     if os.path.isfile(args.text):
-        args.text = open(args.text).read().rstrip()
+        args.text = open(args.text)
+    else:
+        args.text = io.StringIO(args.text + '\n')
     
     return args 
 
@@ -45,7 +50,8 @@ def main():
 
     args = get_args()
     out_fh = open(args.outfile, 'wt') if args.outfile else sys.stdout
-    out_fh.write(args.text.upper() + '\n')
+    for line in args.text:
+        out_fh.write(line.upper())
     out_fh.close()
 
     
