@@ -132,3 +132,19 @@ def test_words_only():
     rv, out = getstatusoutput(f'{win_prg} -w {one_line}')
     assert rv == 0
     assert out.rstrip() == '       2 ./inputs/one.txt'
+    
+# --------------------------------------------------
+def test_words_lines_only():
+    """Test on words and lines only flag combined"""
+
+    rv, out = getstatusoutput(f'{win_prg} -wl {one_line}')
+    assert rv == 0
+    assert out.rstrip() == '       2       1 ./inputs/one.txt'
+    
+# --------------------------------------------------
+def test_words_bytes_only():
+    """Test on words and bytes only flag combined"""
+
+    rv, out = getstatusoutput(f'{win_prg} -wl {one_line}')
+    assert rv == 0
+    assert out.rstrip() == '       2       2 ./inputs/one.txt'
