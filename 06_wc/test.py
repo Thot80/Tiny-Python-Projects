@@ -112,14 +112,23 @@ def test_stdin():
 def test_bytes_only():
     """Test on bytes only flag"""
 
-    rv, out = getstatusoutput(f'{win_prg} {one_line}')
+    rv, out = getstatusoutput(f'{win_prg} -c {one_line}')
     assert rv == 0
     assert out.rstrip() == '       2 ./inputs/one.txt'
     
-    # --------------------------------------------------
+# --------------------------------------------------
 def test_lines_only():
     """Test on lines only flag"""
 
-    rv, out = getstatusoutput(f'{win_prg} {one_line}')
+    rv, out = getstatusoutput(f'{win_prg} -l {one_line}')
     assert rv == 0
     assert out.rstrip() == '       1 ./inputs/one.txt'
+    
+
+# --------------------------------------------------
+def test_words_only():
+    """Test on words only flag"""
+
+    rv, out = getstatusoutput(f'{win_prg} -w {one_line}')
+    assert rv == 0
+    assert out.rstrip() == '       2 ./inputs/one.txt'
