@@ -119,3 +119,6 @@ test:
    pytest -xv test.py
 ```
 
+## En Vrac
+
+Si argument de type file et defaulty value un path, renvois directement un file handler à partir de ce path !

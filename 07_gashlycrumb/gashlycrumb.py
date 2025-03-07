@@ -7,6 +7,8 @@ Purpose: Gashlycrumb
 
 import argparse
 
+from pprint import pprint as pp
+
 
 # --------------------------------------------------
 def get_args():
@@ -19,12 +21,13 @@ def get_args():
     parser.add_argument('letter',
                         metavar='letter',
                         help='Letter(s)',
-                        nargs='+')
+                        nargs='+',
+                        type=str)
 
     
     parser.add_argument('-f',
                         '--file',
-                        metavar='file',
+                        metavar='FILE',
                         help='Input file',
                         type=argparse.FileType(mode='rt', encoding='UTF-8'),
                         default='gashlycrumb.txt')
@@ -37,13 +40,14 @@ def main():
     """Make a jazz noise here"""
 
     args = get_args()
-    letter_to_line = {}
+    lookup = {}
     
     for line in args.file:
-        letter_to_line[line[0].lower()] = line.strip()
+        lookup[line[0].lower()] = line.strip()
 
+    
     for letter in args.letter:
-        print(letter_to_line.get(letter.lower(), f'I do not know "{letter}".'))
+        print(lookup.get(letter.lower(), f'I do not know "{letter}".'))
     
     
 # --------------------------------------------------
