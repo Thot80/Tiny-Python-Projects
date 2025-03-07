@@ -10,6 +10,7 @@ import os
 import io
 import sys
 
+
 # --------------------------------------------------
 def get_args():
     """Get command-line arguments"""
@@ -36,9 +37,11 @@ def get_args():
                         help='Output in lower case',
                         )
     
+    #TODO Add functionnality to write in multiples output files 
     args = parser.parse_args()
     
-    # In both case, filr or tect passed, we want to return a file handler as args to read it line by line (this allows to deal with large files)
+    # In both case, filr or text passed, we want to return a file handler as args to read it line by line (this allows to deal with large files)
+    # sys.stdout is always open, no concise way i can think of, wrap loop in if and add else for stdout....
     if os.path.isfile(args.text):
         args.text = open(args.text)
     else:
