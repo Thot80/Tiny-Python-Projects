@@ -106,3 +106,12 @@ def test_stdin():
     rv, out = getstatusoutput(f'{win_prg} < {fox}')
     assert rv == 0
     assert out.rstrip() == '       1       9      45 <stdin>'
+    
+    
+# --------------------------------------------------
+def test_bytes_only():
+    """Test on bytes only flag"""
+
+    rv, out = getstatusoutput(f'{win_prg} {one_line}')
+    assert rv == 0
+    assert out.rstrip() == '       2 ./inputs/one.txt'
