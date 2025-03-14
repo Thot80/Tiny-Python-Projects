@@ -6,7 +6,7 @@ import os
 from subprocess import getstatusoutput, getoutput
 
 prg = './apples.py'
-win_prg = f'python3 {prg}'
+win_prg = f'python {prg}'
 fox = '../inputs/fox.txt'
 
 

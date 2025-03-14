@@ -1,71 +1,56 @@
-#!/usr/bin/env python3
+#!/usr/bin/env py
 """
 Author : Anonymous <Anonymous@DESKTOP-NHPIQ44>
 Date   : 2025-03-14
-Purpose: Rock the Casbah
+Purpose: Apples and bananas
 """
 
 import argparse
-
+import os
+import io
+import sys
+import re
 
 # --------------------------------------------------
 def get_args():
     """Get command-line arguments"""
 
     parser = argparse.ArgumentParser(
-        description='Rock the Casbah',
+        description='Apples and bananas',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument('positional',
-                        metavar='str',
-                        help='A positional argument')
+    parser.add_argument('text',
+                        metavar='text',
+                        help='Input text or file',)
 
-    parser.add_argument('-a',
-                        '--arg',
-                        help='A named string argument',
-                        metavar='str',
+    parser.add_argument('-v',
+                        '--vowel',
+                        help='The vowel to substitute',
+                        metavar='vowel',
                         type=str,
-                        default='')
+                        default='a',
+                        choices=['a', 'e', 'i', 'o', 'u'])
 
-    parser.add_argument('-i',
-                        '--int',
-                        help='A named integer argument',
-                        metavar='int',
-                        type=int,
-                        default=0)
 
-    parser.add_argument('-f',
-                        '--file',
-                        help='A readable file',
-                        metavar='FILE',
-                        type=argparse.FileType('rt'),
-                        default=None)
-
-    parser.add_argument('-o',
-                        '--on',
-                        help='A boolean flag',
-                        action='store_true')
-
-    return parser.parse_args()
-
+    
+    args = parser.parse_args()
+    if os.path.isfile(args.text):
+        args.text = open(args.text)
+    else:
+        args.text = io.StringIO(args.text + '\n')
+    
+    return args 
 
 # --------------------------------------------------
 def main():
     """Make a jazz noise here"""
 
     args = get_args()
-    str_arg = args.arg
-    int_arg = args.int
-    file_arg = args.file
-    flag_arg = args.on
-    pos_arg = args.positional
-
-    print(f'str_arg = "{str_arg}"')
-    print(f'int_arg = "{int_arg}"')
-    print('file_arg = "{}"'.format(file_arg.name if file_arg else ''))
-    print(f'flag_arg = "{flag_arg}"')
-    print(f'positional = "{pos_arg}"')
-
+    
+    for line in args.text:
+        output = re.sub("[aeiou]", args.vowel, line)
+        output = re.sub("[AEIOU]", args.vowel.upper(), output)
+        print(output)
 
 # --------------------------------------------------
 if __name__ == '__main__':
